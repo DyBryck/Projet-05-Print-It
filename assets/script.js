@@ -17,14 +17,24 @@ const slides = [
 	}
 ]
 
-const dots = [document.getElementById("dot0"), document.getElementById("dot1"), document.getElementById("dot2"), document.getElementById("dot3")]
-
-let arrow_left = document.querySelector(".arrow_left")
-let arrow_right = document.querySelector(".arrow_right")
 let bannerImg = document.querySelector(".banner-img")
 let tagLine = document.querySelector("#banner p")
+let dots = []
 let i = 0
 
+const dotsDiv = document.querySelector(".dots")
+for (let dot = 0; dot < 4; dot++) {
+	let div = document.createElement("div")
+	div.classList.add("dot")
+	if (dot === 0) {
+		div.classList.add("dot_selected")
+	}
+	div.setAttribute("id", `${dot}`)
+	dotsDiv.appendChild(div)
+	dots.push(div)
+}
+
+let arrow_left = document.querySelector(".arrow_left")
 arrow_left.addEventListener("click", () => {
 	dots[i].classList.remove("dot_selected")
 	i--
@@ -36,6 +46,7 @@ arrow_left.addEventListener("click", () => {
 	tagLine.innerHTML = slides[i].tagLine
 })
 
+let arrow_right = document.querySelector(".arrow_right")
 arrow_right.addEventListener("click", () => {
 	dots[i].classList.remove("dot_selected")
 	i++
