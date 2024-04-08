@@ -14,46 +14,48 @@ const slides = [
 	{
 		"image":"./assets/images/slideshow/slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
-	}
+	},
 ]
 
 let bannerImg = document.querySelector(".banner-img")
 let tagLine = document.querySelector("#banner p")
-let dots = []
 let i = 0
 
 const dotsDiv = document.querySelector(".dots")
-for (let dot = 0; dot < 4; dot++) {
-	let div = document.createElement("div")
-	div.classList.add("dot")
-	if (dot === 0) {
-		div.classList.add("dot_selected")
+const generateDots = (index) => {
+	dotsDiv.innerHTML = ""
+	for (let dot = 0; dot < slides.length; dot++) {
+		let div = document.createElement("div")
+		if (dot === index) {
+			div.className = "dot dot_selected"
+		} else {
+			div.className = "dot"
+		}
+		div.id = dot
+		dotsDiv.appendChild(div)
 	}
-	div.setAttribute("id", `${dot}`)
-	dotsDiv.appendChild(div)
-	dots.push(div)
 }
+
+generateDots(i)
 
 let arrow_left = document.querySelector(".arrow_left")
 arrow_left.addEventListener("click", () => {
-	dots[i].classList.remove("dot_selected")
 	i--
 	if (i === -1) {
-		i = 3
+		i = slides.length - 1
 	}
 	bannerImg.src = slides[i].image
-	dots[i].classList.add("dot_selected")
 	tagLine.innerHTML = slides[i].tagLine
+	generateDots(i)
 })
 
 let arrow_right = document.querySelector(".arrow_right")
 arrow_right.addEventListener("click", () => {
-	dots[i].classList.remove("dot_selected")
 	i++
-	if (i === 4) {
+	if (i === slides.length) {
 		i = 0
 	}
 	bannerImg.src = slides[i].image
-	dots[i].classList.add("dot_selected")
 	tagLine.innerHTML = slides[i].tagLine
+	generateDots(i)
 })
