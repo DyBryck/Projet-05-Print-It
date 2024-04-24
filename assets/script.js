@@ -17,15 +17,12 @@ const slides = [
 	},
 ]
 
-let bannerImg = document.querySelector(".banner-img")
-let tagLine = document.querySelector("#banner p")
-let i = 0
-
+/*
 const dotsDiv = document.querySelector(".dots")
 const generateDots = (index) => {
 	dotsDiv.innerHTML = ""
 	for (let dot = 0; dot < slides.length; dot++) {
-		let div = document.createElement("div")
+		const div = document.createElement("div")
 		if (dot === index) {
 			div.className = "dot dot_selected"
 		} else {
@@ -36,9 +33,13 @@ const generateDots = (index) => {
 	}
 }
 
+let i = 0
 generateDots(i)
 
-let arrow_left = document.querySelector(".arrow_left")
+const bannerImg = document.querySelector(".banner-img")
+const tagLine = document.querySelector("#banner p")
+
+const arrow_left = document.querySelector(".arrow_left")
 arrow_left.addEventListener("click", () => {
 	i--
 	if (i === -1) {
@@ -49,7 +50,7 @@ arrow_left.addEventListener("click", () => {
 	generateDots(i)
 })
 
-let arrow_right = document.querySelector(".arrow_right")
+const arrow_right = document.querySelector(".arrow_right")
 arrow_right.addEventListener("click", () => {
 	i++
 	if (i === slides.length) {
@@ -58,4 +59,27 @@ arrow_right.addEventListener("click", () => {
 	bannerImg.src = slides[i].image
 	tagLine.innerHTML = slides[i].tagLine
 	generateDots(i)
+})
+*/
+
+const dotsDiv = document.querySelector(".dots")
+for (i = 0; i < slides.length; i++) {
+	const dotDiv = document.createElement("div")
+	dotsDiv.appendChild(dotDiv)
+
+	if (i ===  ) {
+		dotDiv.className = "dot dot_selected"
+	} else {
+		dotDiv.className = "dot"
+	}
+}
+
+const arrow_left = document.querySelector(".arrow_left")
+arrow_left.addEventListener("click", () => {
+
+})
+
+const arrow_right = document.querySelector(".arrow_right")
+arrow_right.addEventListener("click", () => {
+
 })
