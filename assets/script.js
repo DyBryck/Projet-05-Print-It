@@ -18,11 +18,10 @@ const slides = [
   },
 ];
 
-let index = 0;
-
 const dotsDiv = document.querySelector(".dots");
 const generateDots = (index) => {
   dotsDiv.innerHTML = "";
+
   for (let i = 0; i < slides.length; i++) {
     const div = document.createElement("div");
     if (i === index) {
@@ -30,34 +29,25 @@ const generateDots = (index) => {
     } else {
       div.className = "dot";
     }
-    div.id = i;
     dotsDiv.appendChild(div);
   }
 };
 
+let index = 0;
 generateDots(index);
 
 const bannerImg = document.querySelector(".banner-img");
 const tagLine = document.querySelector("#banner p");
 
 const arrow_left = document.querySelector(".arrow_left");
-arrow_left.addEventListener("click", () => {
-  index--;
-  if (index === -1) {
-    index = slides.length - 1;
-  }
-  bannerImg.src = slides[index].image;
-  tagLine.innerHTML = slides[index].tagLine;
-  generateDots(i);
-});
-
 const arrow_right = document.querySelector(".arrow_right");
-arrow_right.addEventListener("click", () => {
-  index++;
-  if (index === slides.length) {
-    index = 0;
-  }
+
+function navigateCarousel(direction) {
+  index = (index + direction + slides.length) % slides.length;
   bannerImg.src = slides[index].image;
   tagLine.innerHTML = slides[index].tagLine;
   generateDots(index);
-});
+}
+
+arrow_left.addEventListener("click", () => navigateCarousel(-1));
+arrow_right.addEventListener("click", () => navigateCarousel(1));
