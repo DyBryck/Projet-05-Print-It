@@ -18,45 +18,46 @@ const slides = [
   },
 ];
 
+let index = 0;
+
 const dotsDiv = document.querySelector(".dots");
 const generateDots = (index) => {
   dotsDiv.innerHTML = "";
-  for (let dot = 0; dot < slides.length; dot++) {
+  for (let i = 0; i < slides.length; i++) {
     const div = document.createElement("div");
-    if (dot === index) {
+    if (i === index) {
       div.className = "dot dot_selected";
     } else {
       div.className = "dot";
     }
-    div.id = dot;
+    div.id = i;
     dotsDiv.appendChild(div);
   }
 };
 
-let i = 0;
-generateDots(i);
+generateDots(index);
 
 const bannerImg = document.querySelector(".banner-img");
 const tagLine = document.querySelector("#banner p");
 
 const arrow_left = document.querySelector(".arrow_left");
 arrow_left.addEventListener("click", () => {
-  i--;
-  if (i === -1) {
-    i = slides.length - 1;
+  index--;
+  if (index === -1) {
+    index = slides.length - 1;
   }
-  bannerImg.src = slides[i].image;
-  tagLine.innerHTML = slides[i].tagLine;
+  bannerImg.src = slides[index].image;
+  tagLine.innerHTML = slides[index].tagLine;
   generateDots(i);
 });
 
 const arrow_right = document.querySelector(".arrow_right");
 arrow_right.addEventListener("click", () => {
-  i++;
-  if (i === slides.length) {
-    i = 0;
+  index++;
+  if (index === slides.length) {
+    index = 0;
   }
-  bannerImg.src = slides[i].image;
-  tagLine.innerHTML = slides[i].tagLine;
-  generateDots(i);
+  bannerImg.src = slides[index].image;
+  tagLine.innerHTML = slides[index].tagLine;
+  generateDots(index);
 });
