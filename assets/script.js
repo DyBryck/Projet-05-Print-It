@@ -1,19 +1,19 @@
 const slides = [
   {
-    image: "./assets/images/slideshow/slide1.jpg",
+    image: "slide1.jpg",
     tagLine: "Impressions tous formats <span>en boutique et en ligne</span>",
   },
   {
-    image: "./assets/images/slideshow/slide2.jpg",
+    image: "slide2.jpg",
     tagLine:
       "Tirages haute définition grand format <span>pour vos bureaux et events</span>",
   },
   {
-    image: "./assets/images/slideshow/slide3.jpg",
+    image: "slide3.jpg",
     tagLine: "Grand choix de couleurs <span>de CMJN aux pantones</span>",
   },
   {
-    image: "./assets/images/slideshow/slide4.png",
+    image: "slide4.png",
     tagLine: "Autocollants <span>avec découpe laser sur mesure</span>",
   },
 ];
@@ -36,8 +36,10 @@ const generateDots = (index) => {
 generateDots(index);
 
 function navigateCarousel(direction) {
-  index = (index + direction + slides.length) % slides.length;
-  bannerImg.src = slides[index].image;
+  // index = (index + direction + slides.length) % slides.length;
+  index += direction;
+  index = index < 0 ? slides.length - 1 : index > slides.length - 1 ? 0 : index;
+  bannerImg.src = "./assets/images/slideshow/" + slides[index].image;
   tagLine.innerHTML = slides[index].tagLine;
   generateDots(index);
 }
