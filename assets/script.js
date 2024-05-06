@@ -39,9 +39,6 @@ generateDots(index);
 const bannerImg = document.querySelector(".banner-img");
 const tagLine = document.querySelector("#banner p");
 
-const arrow_left = document.querySelector(".arrow_left");
-const arrow_right = document.querySelector(".arrow_right");
-
 function navigateCarousel(direction) {
   index = (index + direction + slides.length) % slides.length;
   bannerImg.src = slides[index].image;
@@ -49,5 +46,8 @@ function navigateCarousel(direction) {
   generateDots(index);
 }
 
+const arrow_left = document.querySelector(".arrow_left");
 arrow_left.addEventListener("click", () => navigateCarousel(-1));
+
+const arrow_right = document.querySelector(".arrow_right");
 arrow_right.addEventListener("click", () => navigateCarousel(1));
