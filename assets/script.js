@@ -18,26 +18,22 @@ const slides = [
   },
 ];
 
+let index = 0;
+const bannerImg = document.querySelector(".banner-img");
+const tagLine = document.querySelector("#banner p");
+
 const dotsDiv = document.querySelector(".dots");
 const generateDots = (index) => {
   dotsDiv.innerHTML = "";
 
   for (let i = 0; i < slides.length; i++) {
     const div = document.createElement("div");
-    if (i === index) {
-      div.className = "dot dot_selected";
-    } else {
-      div.className = "dot";
-    }
+    div.className = i === index ? "dot dot_selected" : "dot";
     dotsDiv.appendChild(div);
   }
 };
 
-let index = 0;
 generateDots(index);
-
-const bannerImg = document.querySelector(".banner-img");
-const tagLine = document.querySelector("#banner p");
 
 function navigateCarousel(direction) {
   index = (index + direction + slides.length) % slides.length;
