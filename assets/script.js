@@ -26,11 +26,11 @@ const dotsDiv = document.querySelector(".dots");
 const generateDots = (index) => {
   dotsDiv.innerHTML = "";
 
-  for (let i = 0; i < slides.length; i++) {
+  slides.forEach((slide, i) => {
     const div = document.createElement("div");
     div.className = i === index ? "dot dot_selected" : "dot";
     dotsDiv.appendChild(div);
-  }
+  });
 };
 
 generateDots(index);
