@@ -264,6 +264,11 @@ header {
 	padding-left:1.5em;
 	width: 200px;
 }
+
+#contact img {
+	width: 100%;
+}
+
 .inline-icon {
 	vertical-align: middle;
 }
