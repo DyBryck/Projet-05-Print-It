@@ -26,7 +26,7 @@ const dotsDiv = document.querySelector(".dots");
 const generateDots = (index) => {
   dotsDiv.innerHTML = "";
 
-  slides.forEach((slide, i) => {
+  slides.forEach((_, i) => {
     const div = document.createElement("div");
     div.className = i === index ? "dot dot_selected" : "dot";
     dotsDiv.appendChild(div);
@@ -36,7 +36,6 @@ const generateDots = (index) => {
 generateDots(index);
 
 function navigateCarousel(direction) {
-  // index = (index + direction + slides.length) % slides.length;
   index += direction;
   index = index < 0 ? slides.length - 1 : index > slides.length - 1 ? 0 : index;
   bannerImg.src = "./assets/images/slideshow/" + slides[index].image;
